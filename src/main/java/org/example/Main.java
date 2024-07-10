@@ -11,9 +11,6 @@ public class Main {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
 
-        //Zoo zoo = new Zoo(200, 200,);
-
-        //em.persist(zoo);
         em.getTransaction().commit();
         em.close();
         emf.close();
