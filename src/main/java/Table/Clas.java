@@ -6,24 +6,15 @@ import java.util.Set;
 @Entity
 @Table(name = "Класс")
 public class Clas {
+    private int id_clas;
+    private String view_ani;
+    private Set<Animals> animals;
+    public Clas(String view_ani) {
+        setView_ani(view_ani);
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_clas;
-
-    @Column(name = "Вид животного")
-    private String view_ani;
-
-    @OneToMany(mappedBy = "clas", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Animals> animals;
-
-    public Clas() {
-    }
-
-    public Clas(String view_ani) {
-        this.view_ani = view_ani;
-    }
-
     public int getId_clas() {
         return id_clas;
     }
@@ -32,6 +23,7 @@ public class Clas {
         this.id_clas = id_clas;
     }
 
+    @Column(name = "Вид животного")
     public String getView_ani() {
         return view_ani;
     }
@@ -40,6 +32,7 @@ public class Clas {
         this.view_ani = view_ani;
     }
 
+    @OneToMany(mappedBy = "clas", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Set<Animals> getAnimals() {
         return animals;
     }
@@ -47,4 +40,5 @@ public class Clas {
     public void setAnimals(Set<Animals> animals) {
         this.animals = animals;
     }
+
 }

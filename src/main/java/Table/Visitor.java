@@ -7,24 +7,18 @@ import java.util.Set;
 @Table(name = "Посетитель")
 public class Visitor {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_Visitor;
-
-    @Column(name = "ФИО")
     private String FIO;
-
-    @Column(name = "Возраст")
     private String Age;
-
-    @OneToMany(mappedBy = "visitor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Ticket> tickets;
 
     public Visitor(String FIO, String Age){
-        this.FIO = FIO;
-        this.Age = Age;
+        setFIO(FIO);
+        setAge(Age);
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId_Visitor() {
         return id_Visitor;
     }
@@ -33,6 +27,7 @@ public class Visitor {
         this.id_Visitor = id_Visitor;
     }
 
+    @Column(name = "ФИО")
     public String getFIO() {
         return FIO;
     }
@@ -41,6 +36,7 @@ public class Visitor {
         this.FIO = FIO;
     }
 
+    @Column(name = "Возраст")
     public String getAge() {
         return Age;
     }
@@ -49,6 +45,7 @@ public class Visitor {
         this.Age = age;
     }
 
+    @OneToMany(mappedBy = "visitor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Set<Ticket> getTickets() {
         return tickets;
     }
@@ -56,4 +53,13 @@ public class Visitor {
     public void setTickets(Set<Ticket> tickets) {
         this.tickets = tickets;
     }
+
+
+
+
+
+
+
+
+
 }

@@ -31,8 +31,8 @@ public class Animals {
     private Cell cell;
 
     public Animals(String type_ani, Clas clas){
-        this.type_ani = type_ani;
-        this.clas = clas;
+        setType_ani(type_ani);
+        setClas(clas);
     }
 
     public int getId_Animals() {
@@ -51,11 +51,26 @@ public class Animals {
         this.type_ani = type_ani;
     }
 
-
     public Set<Workers> workers() {
         return workers;
     }
     public void setWorkers(Set<Workers> workers) {
         this.workers = workers;
+    }
+
+    public Clas getClas() {
+        return clas;
+    }
+
+    public void setClas(Clas clas) {
+        this.clas = clas;
+    }
+
+    public Cell getCell() {
+        return cell;
+    }
+
+    public void setCell(Cell cell) {
+        this.cell = cell;
     }
 }

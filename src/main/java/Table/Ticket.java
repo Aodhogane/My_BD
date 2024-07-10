@@ -8,34 +8,21 @@ import java.util.Date;
 @Table(name = "Билеты")
 public class Ticket {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_Ticket;
-
-    @Column(name = "Дата")
     private Date data;
-
-    @Column (name = "Стоимость")
     private int Cost;
-
-    @Column (name = "Количество")
     private int Col;
-
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_Zoo", referencedColumnName = "id_Zoo")
     private Zoo zoo;
-
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_Visitor", referencedColumnName = "id_Visitor")
     private Visitor visitor;
 
-    public Ticket(Date data, int Cost){
-        this.data = data;
-        this.Cost = Cost;
-        this.Col = Col;
-        this.zoo = zoo;
+    public Ticket(Date data, int Cost, int Col){
+       setData(data);
+       setCost(Cost);
+       setCol(Col);
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId_Ticket() {
         return id_Ticket;
     }
@@ -44,6 +31,7 @@ public class Ticket {
         this.id_Ticket = id_Ticket;
     }
 
+    @Column(name = "Дата")
     public Date getData() {
         return data;
     }
@@ -52,6 +40,7 @@ public class Ticket {
         this.data = data;
     }
 
+    @Column (name = "Стоимость")
     public int getCost() {
         return Cost;
     }
@@ -60,6 +49,17 @@ public class Ticket {
         Cost = cost;
     }
 
+    @Column (name = "Количество")
+    public int getCol() {
+        return Col;
+    }
+
+    public void setCol(int col) {
+        Col = col;
+    }
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_Zoo", referencedColumnName = "id_Zoo")
     public Zoo getZoo() {
         return zoo;
     }
@@ -68,11 +68,13 @@ public class Ticket {
         this.zoo = zoo;
     }
 
-    public int getCol() {
-        return Col;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_Visitor", referencedColumnName = "id_Visitor")
+    public Visitor getVisitor() {
+        return visitor;
     }
 
-    public void setCol(int col) {
-        Col = col;
+    public void setVisitor(Visitor visitor) {
+        this.visitor = visitor;
     }
 }
