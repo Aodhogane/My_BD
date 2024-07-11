@@ -30,9 +30,9 @@ public class Workers {
 
 
     public Workers(String Post, String FIO, Zoo zoo){
-        setPost(Post);
-        setFIO(FIO);
-        setZoo(zoo);
+        this.Post = Post;
+        this.FIO = FIO;
+        this.zoo = zoo;
     }
 
     public int getId_Workers() {

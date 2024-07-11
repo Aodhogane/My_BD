@@ -20,8 +20,8 @@ public class Zoo {
     private int rab;
 
     public Zoo(int animals, int rab){
-        setAnimals(animals);
-        setRab(rab);
+        this.animals = animals;
+        this.rab = rab;
     }
 
     @Id
@@ -35,6 +35,7 @@ public class Zoo {
     }
 
     @Column(name = "Количество животных")
+
     public int getAnimals() {
         return animals;
     }
@@ -62,17 +63,6 @@ public class Zoo {
     public void setWorkers(Set<Workers> workers) {
         this.workers = workers;
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

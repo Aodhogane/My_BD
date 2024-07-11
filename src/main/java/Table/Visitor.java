@@ -13,8 +13,8 @@ public class Visitor {
     private Set<Ticket> tickets;
 
     public Visitor(String FIO, String Age){
-        setFIO(FIO);
-        setAge(Age);
+        this.FIO = FIO;
+        this.Age = Age;
     }
 
     @Id

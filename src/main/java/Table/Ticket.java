@@ -16,9 +16,9 @@ public class Ticket {
     private Visitor visitor;
 
     public Ticket(Date data, int Cost, int Col){
-       setData(data);
-       setCost(Cost);
-       setCol(Col);
+       this.data = data;
+       this.Cost = Cost;
+       this.Col = Col;
     }
 
     @Id

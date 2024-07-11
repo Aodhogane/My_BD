@@ -31,8 +31,8 @@ public class Animals {
     private Cell cell;
 
     public Animals(String type_ani, Clas clas){
-        setType_ani(type_ani);
-        setClas(clas);
+        this.type_ani = type_ani;
+        this.clas = clas;
     }
 
     public int getId_Animals() {

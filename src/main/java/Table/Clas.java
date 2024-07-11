@@ -10,7 +10,7 @@ public class Clas {
     private String view_ani;
     private Set<Animals> animals;
     public Clas(String view_ani) {
-        setView_ani(view_ani);
+        this.view_ani = view_ani;
     }
 
     @Id

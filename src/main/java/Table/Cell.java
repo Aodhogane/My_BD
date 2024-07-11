@@ -14,7 +14,7 @@ public class Cell {
     private Set<Animals> animals;
 
     public Cell(String view_cell){
-        setView_cell(view_cell);
+        this.view_cell = view_cell;
     }
 
     @Id
