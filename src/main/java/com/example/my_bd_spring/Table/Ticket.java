@@ -6,9 +6,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Билеты")
-public class Ticket {
+public class Ticket extends BaseEntity {
 
-    private int id_Ticket;
     private Date data;
     private int Cost;
     private int Col;
@@ -21,21 +20,10 @@ public class Ticket {
        this.Col = Col;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId_Ticket() {
-        return id_Ticket;
-    }
-
-    public void setId_Ticket(int id_Ticket) {
-        this.id_Ticket = id_Ticket;
-    }
-
     @Column(name = "Дата")
     public Date getData() {
         return data;
     }
-
     public void setData(Date data) {
         this.data = data;
     }
@@ -44,7 +32,6 @@ public class Ticket {
     public int getCost() {
         return Cost;
     }
-
     public void setCost(int cost) {
         Cost = cost;
     }
@@ -53,27 +40,24 @@ public class Ticket {
     public int getCol() {
         return Col;
     }
-
     public void setCol(int col) {
         Col = col;
     }
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_Zoo", referencedColumnName = "id_Zoo")
+    @JoinColumn(name = "id_Zoo", referencedColumnName = "id")
     public Zoo getZoo() {
         return zoo;
     }
-
     public void setZoo(Zoo zoo) {
         this.zoo = zoo;
     }
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_Visitor", referencedColumnName = "id_Visitor")
+    @JoinColumn(name = "id_Visitor", referencedColumnName = "id")
     public Visitor getVisitor() {
         return visitor;
     }
-
     public void setVisitor(Visitor visitor) {
         this.visitor = visitor;
     }

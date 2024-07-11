@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Зоопарк")
-public class Zoo {
+public class Zoo extends BaseEntity {
 
     private int animals;
     private int rab;
@@ -24,22 +24,10 @@ public class Zoo {
         this.rab = rab;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_Zoo;
-    public int getId() {
-        return id_Zoo;
-    }
-    public void setId(int id_Zoo) {
-        this.id_Zoo = id_Zoo;
-    }
-
     @Column(name = "Количество животных")
-
     public int getAnimals() {
         return animals;
     }
-
     public void setAnimals(int animals) {
         this.animals = animals;
     }
@@ -48,18 +36,17 @@ public class Zoo {
     public int getRab() {
         return rab;
     }
-
     public void setRab(int rab) {
         this.rab = rab;
     }
 
 
-    @OneToMany(mappedBy = "zoo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "zoo",
+            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Workers> workers;
     public Set<Workers> getWorkers() {
         return workers;
     }
-
     public void setWorkers(Set<Workers> workers) {
         this.workers = workers;
     }
