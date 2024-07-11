@@ -1,4 +1,4 @@
-package Table;
+package com.example.my_bd_spring.Table;
 
 import jakarta.persistence.*;
 
