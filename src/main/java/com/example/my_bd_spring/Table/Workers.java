@@ -35,7 +35,7 @@ public class Workers extends BaseEntity{
         this.FIO = FIO;
     }
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_Zoo", referencedColumnName = "id")
     public Zoo getZoo() {
         return zoo;

@@ -44,7 +44,7 @@ public class Ticket extends BaseEntity {
         Col = col;
     }
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_Zoo", referencedColumnName = "id")
     public Zoo getZoo() {
         return zoo;
@@ -53,7 +53,7 @@ public class Ticket extends BaseEntity {
         this.zoo = zoo;
     }
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_Visitor", referencedColumnName = "id")
     public Visitor getVisitor() {
         return visitor;

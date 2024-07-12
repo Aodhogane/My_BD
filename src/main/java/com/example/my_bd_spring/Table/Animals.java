@@ -27,7 +27,7 @@ public class Animals extends BaseEntity {
         this.type_ani = type_ani;
     }
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_Zoo", referencedColumnName = "id")
     public Zoo getZoo() {
         return zoo;
@@ -36,7 +36,7 @@ public class Animals extends BaseEntity {
         this.zoo = zoo;
     }
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_clas", referencedColumnName = "id")
     public Clas getClas() {
         return clas;
@@ -53,7 +53,7 @@ public class Animals extends BaseEntity {
         this.workers = workers;
     }
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_cell", referencedColumnName = "id")
     public Cell getCell() {
         return cell;
