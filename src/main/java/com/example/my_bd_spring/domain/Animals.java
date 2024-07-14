@@ -57,15 +57,6 @@ public class Animals extends BaseEntity {
         this.cell = cell;
     }
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "id_Event", referencedColumnName = "id")
-    public Event getEvent() {
-        return event;
-    }
-    public void setEvent(Event event) {
-        this.event = event;
-    }
-
     @ManyToMany(mappedBy = "animals")
     public Set<Workers> getWorkers() {
         return workers;

@@ -46,4 +46,12 @@ public class Event extends BaseEntity{
         this.zoo = zoo;
     }
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_Animals", referencedColumnName = "id")
+    public Animals getAnimals() {
+        return animals;
+    }
+    public void setAnimals(Animals animals) {
+        this.animals = animals;
+    }
 }
