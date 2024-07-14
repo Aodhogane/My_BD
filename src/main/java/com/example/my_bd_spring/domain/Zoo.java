@@ -1,4 +1,4 @@
-package com.example.my_bd_spring.Table;
+package com.example.my_bd_spring.domain;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -36,7 +36,6 @@ public class Zoo extends BaseEntity {
     public void setRab(int rab) {
         this.rab = rab;
     }
-
 
     @OneToMany(mappedBy = "zoo",
             fetch = FetchType.LAZY, cascade = CascadeType.ALL)

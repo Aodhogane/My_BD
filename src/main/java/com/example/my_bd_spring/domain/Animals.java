@@ -1,4 +1,4 @@
-package com.example.my_bd_spring.Table;
+package com.example.my_bd_spring.domain;
 
 import jakarta.persistence.*;
 
@@ -12,6 +12,7 @@ public class Animals extends BaseEntity {
     private Zoo zoo;
     private Clas clas;
     private Cell cell;
+    private Event event;
     private Set<Workers> workers;
 
     public Animals(String type_ani, Clas clas){
@@ -45,14 +46,6 @@ public class Animals extends BaseEntity {
         this.clas = clas;
     }
 
-    @ManyToMany(mappedBy = "animals")
-    public Set<Workers> getWorkers() {
-        return workers;
-    }
-    public void setWorkers(Set<Workers> workers) {
-        this.workers = workers;
-    }
-
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_cell", referencedColumnName = "id")
     public Cell getCell() {
@@ -61,4 +54,22 @@ public class Animals extends BaseEntity {
     public void setCell(Cell cell) {
         this.cell = cell;
     }
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_Event", referencedColumnName = "id")
+    public Event getEvent() {
+        return event;
+    }
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    @ManyToMany(mappedBy = "animals")
+    public Set<Workers> getWorkers() {
+        return workers;
+    }
+    public void setWorkers(Set<Workers> workers) {
+        this.workers = workers;
+    }
+
 }

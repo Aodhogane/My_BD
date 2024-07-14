@@ -1,4 +1,4 @@
-package com.example.my_bd_spring.Table;
+package com.example.my_bd_spring.domain;
 
 import jakarta.persistence.*;
 import java.util.Set;
@@ -8,10 +8,10 @@ import java.util.Set;
 public class Visitor extends BaseEntity {
 
     private String FIO;
-    private String Age;
+    private int Age;
     private Set<Ticket> tickets;
 
-    public Visitor(String FIO, String Age){
+    public Visitor(String FIO, int Age){
         this.FIO = FIO;
         this.Age = Age;
     }
@@ -25,14 +25,15 @@ public class Visitor extends BaseEntity {
     }
 
     @Column(name = "Возраст")
-    public String getAge() {
+    public int getAge() {
         return Age;
     }
-    public void setAge(String age) {
-        this.Age = age;
+    public void setAge(int age) {
+        Age = age;
     }
 
-    @OneToMany(mappedBy = "visitor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "visitor",
+            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Set<Ticket> getTickets() {
         return tickets;
     }

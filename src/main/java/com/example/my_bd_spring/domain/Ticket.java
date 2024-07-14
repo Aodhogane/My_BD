@@ -1,4 +1,4 @@
-package com.example.my_bd_spring.Table;
+package com.example.my_bd_spring.domain;
 
 import jakarta.persistence.*;
 
@@ -7,25 +7,14 @@ import java.util.Date;
 @Entity
 @Table(name = "Билеты")
 public class Ticket extends BaseEntity {
-
-    private Date data;
     private int Cost;
     private int Col;
     private Zoo zoo;
     private Visitor visitor;
 
-    public Ticket(Date data, int Cost, int Col){
-       this.data = data;
-       this.Cost = Cost;
-       this.Col = Col;
-    }
-
-    @Column(name = "Дата")
-    public Date getData() {
-        return data;
-    }
-    public void setData(Date data) {
-        this.data = data;
+    public Ticket(int cost, int col){
+        this.Cost = cost;
+        this.Col = col;
     }
 
     @Column (name = "Стоимость")
@@ -45,6 +34,15 @@ public class Ticket extends BaseEntity {
     }
 
     @ManyToOne(optional = false)
+    @JoinColumn(name = "id_Visitor", referencedColumnName = "id")
+    public Visitor getVisitor() {
+        return visitor;
+    }
+    public void setVisitor(Visitor visitor) {
+        this.visitor = visitor;
+    }
+
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_Zoo", referencedColumnName = "id")
     public Zoo getZoo() {
         return zoo;
@@ -53,12 +51,4 @@ public class Ticket extends BaseEntity {
         this.zoo = zoo;
     }
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "id_Visitor", referencedColumnName = "id")
-    public Visitor getVisitor() {
-        return visitor;
-    }
-    public void setVisitor(Visitor visitor) {
-        this.visitor = visitor;
-    }
 }
