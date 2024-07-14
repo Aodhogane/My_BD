@@ -8,12 +8,12 @@ import java.security.Timestamp;
 @Table(name = "Ивент")
 public class Event extends BaseEntity{
 
-    private Timestamp data_c;
-    private Timestamp data_do;
+    private String data_c;
+    private String data_do;
     private Zoo zoo;
     private Animals animals;
 
-    public Event(Timestamp data_c, Timestamp data_do) {
+    public Event(String data_c, String data_do) {
         this.data_c = data_c;
         this.data_do = data_do;
     }
@@ -21,18 +21,19 @@ public class Event extends BaseEntity{
     public Event() {}
 
     @Column(name = "Дата с")
-    public Timestamp getData_c() {
+    public String getData_c() {
         return data_c;
     }
-    public void setData_c(Timestamp data_c) {
+
+    public void setData_c(String data_c) {
         this.data_c = data_c;
     }
 
     @Column(name = "Дата до")
-    public Timestamp getData_do() {
+    public String getData_do() {
         return data_do;
     }
-    public void setData_do(Timestamp data_do) {
+    public void setData_do(String data_do) {
         this.data_do = data_do;
     }
 

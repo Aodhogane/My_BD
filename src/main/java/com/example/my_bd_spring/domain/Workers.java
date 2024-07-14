@@ -11,6 +11,7 @@ public class Workers extends BaseEntity{
     private String Post;
     private String FIO;
     private Zoo zoo;
+    private Clas clas;
     private Set<Animals> animals;
 
     public Workers(String Post, String FIO, Zoo zoo){
@@ -45,6 +46,11 @@ public class Workers extends BaseEntity{
     public void setZoo(Zoo zoo) {
         this.zoo = zoo;
     }
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_Clas", referencedColumnName = "id")
+    public Clas getClas(){ return clas; }
+    public void setClas(Clas clas){ this.clas = clas; }
 
     @ManyToMany
     @JoinTable(name = "Уход",
