@@ -18,6 +18,8 @@ public class Event extends BaseEntity{
         this.data_do = data_do;
     }
 
+    public Event() {}
+
     @Column(name = "Дата с")
     public Timestamp getData_c() {
         return data_c;

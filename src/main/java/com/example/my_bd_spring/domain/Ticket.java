@@ -17,6 +17,8 @@ public class Ticket extends BaseEntity {
         this.Col = col;
     }
 
+    public Ticket() {}
+
     @Column (name = "Стоимость")
     public int getCost() {
         return Cost;

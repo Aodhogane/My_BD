@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface TicketRepositories extends JpaRepository<Ticket, Long> {
 
-    @Query("select t from Ticket t where t.col = :col")
-    List<Ticket> findAllTicket(@Param("col") int col);
+    @Query("select t from Ticket t where t.cost = :cost")
+    List<Ticket> findAllTicket(@Param("cost") int cost);
 }

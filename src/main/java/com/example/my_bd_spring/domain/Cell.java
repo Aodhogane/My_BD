@@ -16,6 +16,8 @@ public class Cell extends BaseEntity {
         this.view_cell = view_cell;
     }
 
+    public Cell() {}
+
     @Column(name = "Вид клетки")
     public String getView_cell() {
         return view_cell;

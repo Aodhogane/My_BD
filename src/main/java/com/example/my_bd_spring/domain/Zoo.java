@@ -21,6 +21,8 @@ public class Zoo extends BaseEntity {
         this.rab = rab;
     }
 
+    public Zoo() {}
+
     @Column(name = "Количество животных")
     public int getAnimals() {
         return animals;

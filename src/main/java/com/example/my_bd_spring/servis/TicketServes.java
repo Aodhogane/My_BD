@@ -22,8 +22,8 @@ public class TicketServes {
         this.ticketRepositories = ticketRepositories;
     }
 
-    public List<Ticket> getAllTicket(int col) {
-        return ticketRepositories.findAllTicket(col);
+    public List<Ticket> getAllTicket(int cost) {
+        return ticketRepositories.findAllTicket(cost);
     }
 
     @Transactional

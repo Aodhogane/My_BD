@@ -18,8 +18,8 @@ public class TicketControllers {
         this.ticketServes = ticketServes;
     }
 
-    @GetMapping("/price/{col}")
-    public List<Ticket> getAllTicket(@PathVariable("col") int price) {
-       return ticketServes.getAllTicket(price);
+    @GetMapping("/price/{cost}")
+    public List<Ticket> getAllTicket(@PathVariable("cost") int cost) {
+       return ticketServes.getAllTicket(cost);
    }
 }

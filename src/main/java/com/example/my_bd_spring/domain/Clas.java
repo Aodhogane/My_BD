@@ -7,6 +7,8 @@ import java.util.Set;
 @Table(name = "Класс")
 public class Clas extends BaseEntity {
 
+    public Clas() {}
+
     private String view_ani;
     private Set<Animals> animals;
     public Clas(String view_ani) {

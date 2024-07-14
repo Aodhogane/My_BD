@@ -19,6 +19,8 @@ public class Workers extends BaseEntity{
         this.zoo = zoo;
     }
 
+    public Workers() {}
+
     @Column(name = "Должность")
     public String getPost() {
         return Post;

@@ -16,6 +16,8 @@ public class Visitor extends BaseEntity {
         this.Age = Age;
     }
 
+    public Visitor() {}
+
     @Column(name = "ФИО")
     public String getFIO() {
         return FIO;

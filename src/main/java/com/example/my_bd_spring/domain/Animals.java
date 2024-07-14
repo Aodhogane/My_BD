@@ -20,6 +20,8 @@ public class Animals extends BaseEntity {
         this.clas = clas;
     }
 
+    public Animals() {}
+
     @Column(name = "Вид животного")
     public String getType_ani() {
         return type_ani;
