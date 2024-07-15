@@ -28,21 +28,22 @@ public class MainService {
 
     @Transactional
     public void createTicket(int visitorId, int zooId, int quantity, int cost, String startDate, String endDate) {
-        // Step 1: Check if visitor exists
+
+        // Проверьте, существует ли посетитель
         if (!visitorRepository.existsById(visitorId)) {
-            throw new RuntimeException("Visitor not found");
+            throw new RuntimeException("Посетитель не найден");
         }
 
-        // Step 2: Check if event for animal in the given zoo exists within the specified dates
+        // Проверьте, существует ли событие для животного в данном зоопарке в указанные даты
         boolean eventExists = eventRepository.checkEventForAnimal(zooId, startDate, endDate);
         if (!eventExists) {
-            throw new RuntimeException("Animal not found within the specified dates");
+            throw new RuntimeException("Животное не найдено в указанные сроки");
         }
 
-        // Step 3: Add a ticket purchase record
+        // Добавьте запись о покупке билета
         Ticket ticket = new Ticket(cost, quantity);
-        Visitor visitor = visitorRepository.findById(visitorId).orElseThrow(() -> new RuntimeException("Visitor not found"));
-        Zoo zoo = zooRepository.findById(zooId).orElseThrow(() -> new RuntimeException("Zoo not found"));
+        Visitor visitor = visitorRepository.findById(visitorId).orElseThrow(() -> new RuntimeException("Посетитель не найден"));
+        Zoo zoo = zooRepository.findById(zooId).orElseThrow(() -> new RuntimeException("Зоопарк не найден"));
 
         ticket.setVisitor(visitor);
         ticket.setZoo(zoo);
