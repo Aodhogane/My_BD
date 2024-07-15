@@ -8,26 +8,26 @@ import java.util.Set;
 @Table(name = "Животные")
 public class Animals extends BaseEntity {
 
-    private String type_ani;
+    private String typeAni;
     private Zoo zoo;
     private Clas clas;
     private Cell cell;
     private Event event;
     private Set<Workers> workers;
 
-    public Animals(String type_ani, Clas clas){
-        this.type_ani = type_ani;
+    public Animals(String typeAni, Clas clas){
+        this.typeAni = typeAni;
         this.clas = clas;
     }
 
     public Animals() {}
 
     @Column(name = "Вид животного")
-    public String getType_ani() {
-        return type_ani;
+    public String getTypeAni() {
+        return typeAni;
     }
-    public void setType_ani(String type_ani) {
-        this.type_ani = type_ani;
+    public void setTypeAni(String typeAni) {
+        this.typeAni = typeAni;
     }
 
     @ManyToOne(optional = false)
@@ -64,5 +64,4 @@ public class Animals extends BaseEntity {
     public void setWorkers(Set<Workers> workers) {
         this.workers = workers;
     }
-
 }
