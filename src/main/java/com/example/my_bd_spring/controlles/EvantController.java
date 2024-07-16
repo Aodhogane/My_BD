@@ -1,17 +1,17 @@
 package com.example.my_bd_spring.controlles;
 
-import com.example.my_bd_spring.servis.MainService;
+import com.example.my_bd_spring.servis.EvantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-public class MainController {
+public class EvantController {
 
     @Autowired
-    private MainService mainService;
+    private EvantService evantService;
 
-    @PostMapping("/create-ticket")
+    @PostMapping("/evant")
     public void createTicket(
             @RequestParam("visitorId") int visitorId,
             @RequestParam("zooId") int zooId,
@@ -19,6 +19,6 @@ public class MainController {
             @RequestParam("cost") int cost,
             @RequestParam("startDate") String startDate,
             @RequestParam("endDate") String endDate) {
-        mainService.createTicket(visitorId, zooId, quantity, cost, startDate, endDate);
+        evantService.createTicket(visitorId, zooId, quantity, cost, startDate, endDate);
     }
 }

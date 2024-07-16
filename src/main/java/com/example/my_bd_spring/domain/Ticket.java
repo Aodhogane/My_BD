@@ -2,8 +2,6 @@ package com.example.my_bd_spring.domain;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
-
 @Entity
 @Table(name = "Билеты")
 public class Ticket extends BaseEntity {
@@ -53,5 +51,4 @@ public class Ticket extends BaseEntity {
     public void setZoo(Zoo zoo) {
         this.zoo = zoo;
     }
-
 }

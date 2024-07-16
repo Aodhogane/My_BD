@@ -1,7 +1,6 @@
 package com.example.my_bd_spring.domain;
 
 import jakarta.persistence.*;
-
 import java.util.Set;
 
 @Entity
@@ -11,9 +10,8 @@ public class Animals extends BaseEntity {
     private String typeAni;
     private Zoo zoo;
     private Clas clas;
-    private Cell cell;
-    private Event event;
     private Set<Workers> workers;
+    private Cell cell;
 
     public Animals(String typeAni, Clas clas){
         this.typeAni = typeAni;
@@ -56,11 +54,11 @@ public class Animals extends BaseEntity {
     public void setCell(Cell cell) {
         this.cell = cell;
     }
-
     @ManyToMany(mappedBy = "animals")
     public Set<Workers> getWorkers() {
         return workers;
     }
+
     public void setWorkers(Set<Workers> workers) {
         this.workers = workers;
     }

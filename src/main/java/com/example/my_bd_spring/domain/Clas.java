@@ -6,21 +6,21 @@ import java.util.Set;
 @Entity
 @Table(name = "Класс")
 public class Clas extends BaseEntity {
-
-    public Clas() {}
-
-    private String view_ani;
+    private String viewAni;
     private Set<Animals> animals;
-    public Clas(String view_ani) {
-        this.view_ani = view_ani;
+
+    public Clas(int animalClassId) {}
+
+    public Clas(String viewAni) {
+        this.viewAni = viewAni;
     }
 
     @Column(name = "Вид животного")
-    public String getView_ani() {
-        return view_ani;
+    public String getviewAni() {
+        return viewAni;
     }
-    public void setView_ani(String view_ani) {
-        this.view_ani = view_ani;
+    public void setviewAni(String viewAni) {
+        this.viewAni = viewAni;
     }
 
     @OneToMany(mappedBy = "clas", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

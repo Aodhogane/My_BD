@@ -1,3 +1,4 @@
+
 package com.example.my_bd_spring.servis;
 
 import com.example.my_bd_spring.domain.Ticket;
@@ -12,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MainService {
+public class EvantService {
 
     @Autowired
     private VisitorRepository visitorRepository;
@@ -30,7 +31,7 @@ public class MainService {
     public void createTicket(int visitorId, int zooId, int quantity, int cost, String startDate, String endDate) {
 
         // Проверьте, существует ли посетитель
-        if (!visitorRepository.existsById(visitorId)) {
+        if (!visitorRepository.existsById((long) visitorId)) {
             throw new RuntimeException("Посетитель не найден");
         }
 
@@ -42,8 +43,8 @@ public class MainService {
 
         // Добавьте запись о покупке билета
         Ticket ticket = new Ticket(cost, quantity);
-        Visitor visitor = visitorRepository.findById(visitorId).orElseThrow(() -> new RuntimeException("Посетитель не найден"));
-        Zoo zoo = zooRepository.findById(zooId).orElseThrow(() -> new RuntimeException("Зоопарк не найден"));
+        Visitor visitor = visitorRepository.findById((long) visitorId).orElseThrow(() -> new RuntimeException("Посетитель не найден"));
+        Zoo zoo = zooRepository.findById((long) zooId).orElseThrow(() -> new RuntimeException("Зоопарк не найден"));
 
         ticket.setVisitor(visitor);
         ticket.setZoo(zoo);

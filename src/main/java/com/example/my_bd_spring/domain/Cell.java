@@ -8,24 +8,23 @@ import java.util.Set;
 @Table(name = "Клетки")
 public class Cell extends BaseEntity {
 
-    private String view_cell;
+    private String viewСell;
     private Zoo zoo;
     private Set<Animals> animals;
 
-    public Cell(String view_cell){
-        this.view_cell = view_cell;
+    public Cell(String viewСell){
+        this.viewСell = viewСell;
     }
 
     public Cell() {}
 
     @Column(name = "Вид клетки")
-    public String getView_cell() {
-        return view_cell;
+    public String getviewСell() {
+        return viewСell;
     }
-    public void setView_cell(String view_cell) {
-        this.view_cell = view_cell;
+    public void setviewСell(String viewСell) {
+        this.viewСell = viewСell;
     }
-
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_Zoo", referencedColumnName = "id")

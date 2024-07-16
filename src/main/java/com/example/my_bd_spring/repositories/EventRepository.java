@@ -7,6 +7,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface EventRepository extends JpaRepository<Event, Integer> {
 
-    @Query("SELECT CASE WHEN COUNT(e) > 0 THEN TRUE ELSE FALSE END FROM Event e JOIN e.animals a WHERE a.zoo.id = :zooId AND e.data_c <= :startDate AND e.data_do >= :endDate")
+    @Query("SELECT CASE WHEN COUNT(e) > 0 THEN TRUE ELSE FALSE END FROM Event e JOIN e.animals a " +
+            "WHERE a.zoo.id = :zooId " +
+            "AND e.data_c <= :startDate AND e.data_do >= :endDate")
     boolean checkEventForAnimal(@Param("zooId") Integer zooId, @Param("startDate") String startDate, @Param("endDate") String endDate);
 }

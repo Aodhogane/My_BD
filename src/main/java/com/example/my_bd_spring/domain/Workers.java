@@ -1,22 +1,21 @@
 package com.example.my_bd_spring.domain;
 
 import jakarta.persistence.*;
-
 import java.util.Set;
 
 @Entity
 @Table(name = "Работники")
 public class Workers extends BaseEntity{
 
-    private String Post;
-    private String FIO;
+    private String post;
+    private String fio;
     private Zoo zoo;
     private Clas clas;
     private Set<Animals> animals;
 
-    public Workers(String Post, String FIO, Zoo zoo){
-        this.Post = Post;
-        this.FIO = FIO;
+    public Workers(String post, String fio, Zoo zoo){
+        this.post = post;
+        this.fio = fio;
         this.zoo = zoo;
     }
 
@@ -24,18 +23,18 @@ public class Workers extends BaseEntity{
 
     @Column(name = "Должность")
     public String getPost() {
-        return Post;
+        return post;
     }
     public void setPost(String post) {
-        Post = post;
+        this.post = post;
     }
 
     @Column(name = "ФИО")
-    public String getFIO() {
-        return FIO;
+    public String getFio() {
+        return fio;
     }
-    public void setFIO(String FIO) {
-        this.FIO = FIO;
+    public void setFio(String fio) {
+        this.fio = fio;
     }
 
     @ManyToOne(optional = false)
@@ -49,11 +48,16 @@ public class Workers extends BaseEntity{
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_Clas", referencedColumnName = "id")
-    public Clas getClas(){ return clas; }
-    public void setClas(Clas clas){ this.clas = clas; }
+    public Clas getClas() {
+        return clas;
+    }
+    public void setClas(Clas clas) {
+        this.clas = clas;
+    }
 
     @ManyToMany
-    @JoinTable(name = "Уход",
+    @JoinTable(
+            name = "Уход",
             joinColumns = @JoinColumn(name = "id_Workers"),
             inverseJoinColumns = @JoinColumn(name = "id_Animals"))
     public Set<Animals> getAnimals() {
@@ -62,6 +66,4 @@ public class Workers extends BaseEntity{
     public void setAnimals(Set<Animals> animals) {
         this.animals = animals;
     }
-
-
 }
