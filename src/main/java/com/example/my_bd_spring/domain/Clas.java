@@ -1,5 +1,4 @@
 package com.example.my_bd_spring.domain;
-
 import jakarta.persistence.*;
 import java.util.Set;
 
@@ -9,17 +8,14 @@ public class Clas extends BaseEntity {
     private String viewAni;
     private Set<Animals> animals;
 
-    public Clas(int animalClassId) {}
-
-    public Clas(String viewAni) {
-        this.viewAni = viewAni;
-    }
+    public Clas() {  }
 
     @Column(name = "Вид животного")
-    public String getviewAni() {
+    public String getViewAni() {
         return viewAni;
     }
-    public void setviewAni(String viewAni) {
+
+    public void setViewAni(String viewAni) {
         this.viewAni = viewAni;
     }
 
@@ -27,8 +23,8 @@ public class Clas extends BaseEntity {
     public Set<Animals> getAnimals() {
         return animals;
     }
+
     public void setAnimals(Set<Animals> animals) {
         this.animals = animals;
     }
-
 }

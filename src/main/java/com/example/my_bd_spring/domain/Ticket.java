@@ -10,11 +10,6 @@ public class Ticket extends BaseEntity {
     private Zoo zoo;
     private Visitor visitor;
 
-    public Ticket(int cost, int col){
-        this.Cost = cost;
-        this.Col = col;
-    }
-
     public Ticket() {
     }
 

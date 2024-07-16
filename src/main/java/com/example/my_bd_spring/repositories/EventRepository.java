@@ -5,10 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface EventRepository extends JpaRepository<Event, Integer> {
+import java.util.Optional;
 
-    @Query("SELECT CASE WHEN COUNT(e) > 0 THEN TRUE ELSE FALSE END FROM Event e JOIN e.animals a " +
-            "WHERE a.zoo.id = :zooId " +
-            "AND e.data_c <= :startDate AND e.data_do >= :endDate")
-    boolean checkEventForAnimal(@Param("zooId") Integer zooId, @Param("startDate") String startDate, @Param("endDate") String endDate);
+public interface EventRepository extends JpaRepository<Event, Long> {
+
+    @Query("SELECT CASE WHEN COUNT(e) > 0 THEN true ELSE false END FROM Event e WHERE e.zoo.id = :zooId " +
+            "AND e.animals.id = :animalId AND e.data_c <= :endDate AND e.data_do >= :startDate")
+    boolean checkEventForAnimal(@Param("zooId") int zooId, @Param("animalId") int animalId, @Param("startDate") String startDate, @Param("endDate") String endDate);
+
+    @Query("SELECT e.animals.id FROM Event e WHERE e.zoo.id = :zooId AND e.data_c <= :endDate AND e.data_do >= :startDate")
+    Optional<Object[]> findAnimalIdForZooAndDateRange(@Param("zooId") int zooId, @Param("startDate") String startDate, @Param("endDate") String endDate);
 }

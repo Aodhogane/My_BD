@@ -1,7 +1,6 @@
 package com.example.my_bd_spring.domain;
 
 import jakarta.persistence.*;
-
 import java.util.Set;
 
 @Entity
