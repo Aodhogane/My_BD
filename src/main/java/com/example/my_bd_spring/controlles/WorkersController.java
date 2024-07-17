@@ -24,14 +24,7 @@ public class WorkersController {
 
     @GetMapping("/worker/{workerId}")
     public ResponseEntity<?> getWorkerById(@PathVariable Integer workerId) {
-        try {
-            logger.info("Получен запрос на идентификатор работника: {}", workerId);
-            WorkersResponseDTO worker = workersService.getWorkerById(workerId);
-            logger.info("Рабочий найден: {}", worker);
-            return ResponseEntity.ok(worker);
-        } catch (RuntimeException ex) {
-            logger.error("Ошибка ", ex);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Ошибка: " + ex.getMessage());
-        }
+        WorkersResponseDTO worker = workersService.getWorkerById(workerId);
+        return ResponseEntity.ok(worker);
     }
 }

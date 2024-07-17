@@ -16,23 +16,17 @@ public class TicketController {
     private TicketService ticketService;
 
     @PostMapping("/purchase")
-    public ResponseEntity<TicketResponseDTO> purchaseTicket(@RequestBody TicketPurchaseDTO dto) {
-        TicketResponseDTO ticketResponse;
-        try {
-            ticketResponse = ticketService.purchaseTicket(dto, dto.getVisitorId());
-            return ResponseEntity.ok(ticketResponse);
-        } catch (RuntimeException ex) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        }
+    public ResponseEntity<TicketResponseDTO>
+    purchaseTicket(@RequestBody TicketPurchaseDTO dto) {
+        TicketResponseDTO ticketResponse = ticketService.purchaseTicket(dto, dto.getVisitorId());
+        return ResponseEntity.ok(ticketResponse);
     }
 
     @PostMapping("/purchase/{visitorId}")
-    public ResponseEntity<TicketResponseDTO> purchaseTicketWithVisitorId(@PathVariable Long visitorId, @RequestBody TicketPurchaseDTO dto) {
-        try {
-            TicketResponseDTO ticketResponse = ticketService.purchaseTicket(dto, visitorId);
-            return ResponseEntity.ok(ticketResponse);
-        } catch (RuntimeException ex) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        }
+    public ResponseEntity<TicketResponseDTO>
+    purchaseTicketWithVisitorId(@PathVariable Long visitorId,
+                                @RequestBody TicketPurchaseDTO dto) {
+        TicketResponseDTO ticketResponse = ticketService.purchaseTicket(dto, visitorId);
+        return ResponseEntity.ok(ticketResponse);
     }
 }

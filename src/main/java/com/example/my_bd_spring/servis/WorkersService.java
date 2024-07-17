@@ -18,8 +18,11 @@ public class WorkersService {
     }
 
     public WorkersResponseDTO getWorkerById(Integer workerId) {
-        Workers worker = workerRepository.findById(workerId)
-                .orElseThrow(() -> new RuntimeException("Работник с ID " + workerId + " не найден"));
+        Workers worker = workerRepository.findById(workerId).orElse(null);
+
+        if (worker == null) {
+            return new WorkersResponseDTO();
+        }
 
         List<String> animalTypes = worker.getAnimals().stream()
                 .map(animal -> animal.getTypeAni())

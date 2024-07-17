@@ -28,17 +28,12 @@ public class TicketService {
     public TicketResponseDTO purchaseTicket(TicketPurchaseDTO dto, Long visitorId) {
         LocalDate visitDate = LocalDate.parse(dto.getVisitDate());
 
-        Event event = eventRepository.findById(dto.getEventId())
-                .orElseThrow(() -> new RuntimeException("Ивент не найден"));
+        Event event = eventRepository.findById(dto.getEventId()).orElse(null);
+        Visitor visitor = visitorRepository.findById(visitorId).orElse(null);
 
-        if (event.getAnimals().getId() != dto.getAnimalId() ||
-                visitDate.isBefore(LocalDate.parse(event.getData_c())) ||
-                visitDate.isAfter(LocalDate.parse(event.getData_do()))) {
-            throw new RuntimeException("Животное недоступно для посещения в указанную дату");
+        if (event == null || visitor == null) {
+            return new TicketResponseDTO();
         }
-
-        Visitor visitor = visitorRepository.findById(visitorId)
-                .orElseThrow(() -> new RuntimeException("Посетитель не найден"));
 
         Ticket ticket = new Ticket();
         ticket.setVisitor(visitor);
@@ -46,8 +41,9 @@ public class TicketService {
         ticket.setCost(dto.getCost());
         ticket.setCol(dto.getQuantity());
 
-        Ticket savedTicket = ticketRepository.save(ticket);
+        ticketRepository.save(ticket);
 
-        return new TicketResponseDTO(visitorId, dto.getAnimalId(), dto.getEventId(), dto.getVisitDate(), dto.getQuantity(), dto.getCost());
+        return new TicketResponseDTO(visitorId, dto.getAnimalId(), dto.getEventId(),
+                dto.getVisitDate(), dto.getQuantity(), dto.getCost());
     }
 }
