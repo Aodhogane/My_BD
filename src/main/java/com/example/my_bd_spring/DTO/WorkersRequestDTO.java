@@ -13,7 +13,6 @@ public class WorkersRequestDTO {
 
     }
 
-    // Getters and Setters
     public String getFio() {
         return fio;
     }

@@ -18,7 +18,6 @@ public class WorkersResponseDTO {
         this.animalTypes = animalTypes;
     }
 
-    // Getters and Setters
     public Integer getId() {
         return id;
     }

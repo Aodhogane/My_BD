@@ -3,13 +3,10 @@ package com.example.my_bd_spring.DTO;
 public class TicketPurchaseDTO {
     private long visitorId;
     private int animalId;
-    private Long eventId; // Изменено на Long
+    private Long eventId;
     private String visitDate;
     private int quantity;
     private int cost;
-
-    // Getters and Setters
-
 
     public long getVisitorId() {
         return visitorId;
