@@ -1,9 +1,17 @@
 package com.example.my_bd_spring.repositories;
 
 import com.example.my_bd_spring.domain.Visitor;
-import org.springframework.data.jpa.repository.JpaRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface VisitorRepository extends JpaRepository<Visitor, Long> {
+public class VisitorRepository {
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    public Visitor findById(Long id) {
+        return entityManager.find(Visitor.class, id);
+    }
 }

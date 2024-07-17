@@ -10,15 +10,14 @@ import java.util.stream.Collectors;
 
 @Service
 public class WorkersService {
+    private final WorkersRepository workersRepository;
 
-    private final WorkersRepository workerRepository;
-
-    public WorkersService(WorkersRepository workerRepository) {
-        this.workerRepository = workerRepository;
+    public WorkersService(WorkersRepository workersRepository) {
+        this.workersRepository = workersRepository;
     }
 
     public WorkersResponseDTO getWorkerById(Integer workerId) {
-        Workers worker = workerRepository.findById(workerId).orElse(null);
+        Workers worker = workersRepository.findById(workerId);
 
         if (worker == null) {
             return new WorkersResponseDTO();

@@ -3,7 +3,6 @@ package com.example.my_bd_spring.controlles;
 import com.example.my_bd_spring.DTO.WorkersResponseDTO;
 import com.example.my_bd_spring.servis.WorkersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;

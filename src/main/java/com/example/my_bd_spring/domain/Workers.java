@@ -1,7 +1,10 @@
 package com.example.my_bd_spring.domain;
 
+import com.example.my_bd_spring.domain.Animals;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,7 +15,7 @@ public class Workers extends BaseEntity {
     private String fio;
     private Zoo zoo;
     private Clas clas;
-    private Set<Animals> animals;
+    private Set<Animals> animals = new HashSet<>();
 
     public Workers(String post, String fio, Zoo zoo) {
         this.post = post;

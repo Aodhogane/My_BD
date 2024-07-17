@@ -1,6 +1,10 @@
 package com.example.my_bd_spring.domain;
 
+import com.example.my_bd_spring.domain.Clas;
+import com.example.my_bd_spring.domain.Workers;
+import com.example.my_bd_spring.domain.Zoo;
 import jakarta.persistence.*;
+
 import java.util.Set;
 
 @Entity

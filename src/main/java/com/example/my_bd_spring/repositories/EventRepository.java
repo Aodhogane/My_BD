@@ -1,18 +1,24 @@
 package com.example.my_bd_spring.repositories;
 
 import com.example.my_bd_spring.domain.Event;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
+import org.springframework.stereotype.Repository;
+import java.util.List;
 
-import java.util.Optional;
+@Repository
+public class EventRepository {
 
-public interface EventRepository extends JpaRepository<Event, Long> {
+    @PersistenceContext
+    private EntityManager entityManager;
 
-    @Query("SELECT CASE WHEN COUNT(e) > 0 THEN true ELSE false END FROM Event e WHERE e.zoo.id = :zooId " +
-            "AND e.animals.id = :animalId AND e.data_c <= :endDate AND e.data_do >= :startDate")
-    boolean checkEventForAnimal(@Param("zooId") int zooId, @Param("animalId") int animalId, @Param("startDate") String startDate, @Param("endDate") String endDate);
+    public Event findById(Long id) {
+        return entityManager.find(Event.class, id);
+    }
 
-    @Query("SELECT e.animals.id FROM Event e WHERE e.zoo.id = :zooId AND e.data_c <= :endDate AND e.data_do >= :startDate")
-    Optional<Object[]> findAnimalIdForZooAndDateRange(@Param("zooId") int zooId, @Param("startDate") String startDate, @Param("endDate") String endDate);
+    public List<Event> findAll() {
+        TypedQuery<Event> query = entityManager.createQuery("SELECT e FROM Event e", Event.class);
+        return query.getResultList();
+    }
 }

@@ -8,6 +8,7 @@ import com.example.my_bd_spring.domain.Visitor;
 import com.example.my_bd_spring.repositories.EventRepository;
 import com.example.my_bd_spring.repositories.TicketRepository;
 import com.example.my_bd_spring.repositories.VisitorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -19,6 +20,7 @@ public class TicketService {
     private final EventRepository eventRepository;
     private final VisitorRepository visitorRepository;
 
+    @Autowired
     public TicketService(TicketRepository ticketRepository, EventRepository eventRepository, VisitorRepository visitorRepository) {
         this.ticketRepository = ticketRepository;
         this.eventRepository = eventRepository;
@@ -28,8 +30,8 @@ public class TicketService {
     public TicketResponseDTO purchaseTicket(TicketPurchaseDTO dto, Long visitorId) {
         LocalDate visitDate = LocalDate.parse(dto.getVisitDate());
 
-        Event event = eventRepository.findById(dto.getEventId()).orElse(null);
-        Visitor visitor = visitorRepository.findById(visitorId).orElse(null);
+        Event event = eventRepository.findById(dto.getEventId());
+        Visitor visitor = visitorRepository.findById(visitorId);
 
         if (event == null || visitor == null) {
             return new TicketResponseDTO();
