@@ -9,7 +9,8 @@ public class AddAnimalRequestDTO {
 
     public AddAnimalRequestDTO() { }
 
-    public AddAnimalRequestDTO(String species, Integer classId, Integer zooId, Integer cellId, Integer workerId) {
+    public AddAnimalRequestDTO(String species, Integer classId,
+                               Integer zooId, Integer cellId, Integer workerId) {
         this.species = species;
         this.classId = classId;
         this.zooId = zooId;

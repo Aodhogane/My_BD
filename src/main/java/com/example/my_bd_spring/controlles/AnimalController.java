@@ -16,7 +16,8 @@ public class AnimalController {
     private AnimalService animalService;
 
     @PostMapping("/add-animals/{workerId}")
-    public ResponseEntity<?> addAnimalAndAssignWithWorkerId(@PathVariable Integer workerId, @RequestBody AddAnimalRequestDTO request) {
+    public ResponseEntity<?> addAnimalAndAssignWithWorkerId
+            (@PathVariable Integer workerId, @RequestBody AddAnimalRequestDTO request) {
         try {
             AddAnimalResponseDTO response = animalService.addNewAnimalAndAssign(request, workerId);
             return ResponseEntity.ok(response);

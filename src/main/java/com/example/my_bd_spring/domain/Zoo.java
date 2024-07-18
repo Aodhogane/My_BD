@@ -1,15 +1,12 @@
 package com.example.my_bd_spring.domain;
+
 import java.util.Set;
-
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "Зоопарк")
 public class Zoo extends BaseEntity {
-
     private int animals;
     private int rab;
     private Set<Workers> workers;
@@ -18,14 +15,12 @@ public class Zoo extends BaseEntity {
         this.animals = animals;
         this.rab = rab;
     }
-
     public Zoo() {}
 
     @Column(name = "Количество животных")
     public int getAnimals() {
         return animals;
     }
-
     public void setAnimals(int animals) {
         this.animals = animals;
     }
@@ -34,7 +29,6 @@ public class Zoo extends BaseEntity {
     public int getRab() {
         return rab;
     }
-
     public void setRab(int rab) {
         this.rab = rab;
     }
@@ -44,7 +38,6 @@ public class Zoo extends BaseEntity {
     public Set<Workers> getWorkers() {
         return workers;
     }
-
     public void setWorkers(Set<Workers> workers) {
         this.workers = workers;
     }

@@ -42,8 +42,3 @@ public class Cell extends BaseEntity {
         this.animals = animals;
     }
 }
-
-
-
-
-

@@ -19,14 +19,17 @@ public class WorkersService {
     public WorkersResponseDTO getWorkerById(Integer workerId) {
         Workers worker = workersRepository.findById(workerId);
 
+        // Проверка, если работник не найден, возвращаем пустой объект WorkersResponseDTO
         if (worker == null) {
             return new WorkersResponseDTO();
         }
 
+        // Извлечение и преобразование типов животных, за которыми ухаживает работник, в список строк
         List<String> animalTypes = worker.getAnimals().stream()
                 .map(animal -> animal.getTypeAni())
                 .collect(Collectors.toList());
 
+        // Возврат объекта WorkersResponseDTO с данными о работнике и типах животных
         return new WorkersResponseDTO(worker.getId(), worker.getFio(), worker.getPost(), animalTypes);
     }
 }

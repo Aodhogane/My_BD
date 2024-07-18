@@ -3,7 +3,7 @@ package com.example.my_bd_spring.repositories;
 import com.example.my_bd_spring.domain.Event;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.Query;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class EventRepository {
     }
 
     public List<Event> findAll() {
-        TypedQuery<Event> query = entityManager.createQuery("SELECT e FROM Event e", Event.class);
+        Query query = entityManager.createQuery("SELECT e FROM Event e", Event.class);
         return query.getResultList();
     }
 }
