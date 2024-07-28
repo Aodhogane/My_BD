@@ -4,6 +4,7 @@ import com.example.my_bd_spring.DTO.AddAnimalRequestDTO;
 import com.example.my_bd_spring.DTO.AddAnimalResponseDTO;
 import com.example.my_bd_spring.repositories.AnimalRepository;
 import com.example.my_bd_spring.repositories.WorkersRepository;
+import com.example.my_bd_spring.domain.Workers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,8 @@ public class AnimalService {
     }
 
     public AddAnimalResponseDTO addNewAnimalAndAssign(AddAnimalRequestDTO request, Integer workerId) {
-        if (workersRepository.findById(workerId) == null) {
+        Workers worker = workersRepository.findById(workerId);
+        if (worker == null) {
             throw new RuntimeException("Работник с ID " + workerId + " не найден");
         }
 

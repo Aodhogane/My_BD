@@ -12,17 +12,18 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 @Repository
-public class AnimalRepository {
+public class CustomAnimalRepositoryImpl implements CustomAnimalRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     private final DataSource dataSource;
 
-    public AnimalRepository(DataSource dataSource) {
+    public CustomAnimalRepositoryImpl(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
+    @Override
     @Transactional
     public Integer addNewAnimalAndAssign(String species, Integer classId, Integer zooId, Integer cellId, Integer workerId) {
         Integer newAnimalId = null;

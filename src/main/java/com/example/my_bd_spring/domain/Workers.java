@@ -77,4 +77,5 @@ public class Workers extends BaseEntity {
     public void setAnimals(Set<Animals> animals) {
         this.animals = animals;
     }
+
 }
