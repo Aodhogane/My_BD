@@ -1,33 +1,33 @@
 package com.example.my_bd_spring.repositories;
 
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
 
 import com.example.my_bd_spring.contract.WorkersRepositoryContract;
 import com.example.my_bd_spring.domain.Workers;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
-public class WorkersRepository implements WorkersRepositoryContract {
+public final class WorkersRepository implements WorkersRepositoryContract {
 
     @PersistenceContext
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
+
+    public WorkersRepository(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
     @Override
-    public Workers findById(Integer workerId) {
+    public final Workers findById(final Integer workerId) {
         return entityManager.find(Workers.class, workerId);
     }
 
     @Override
-    public List<Object[]> findWorkerAnimalDetails() {
-        String queryStr = "SELECT w.id as workerId, w.fio as workerFio, w.post as workerPosition, " +
-                "a.id as animalId, a.typeAni as animalType " +
-                "FROM Workers w " +
-                "JOIN w.animals a";
-        TypedQuery<Object[]> query = entityManager.createQuery(queryStr, Object[].class);
-        return query.getResultList();
+    public final List<Object[]> findWorkerAnimalDetails() {
+        String query = "SELECT w.fio, a.typeAni FROM Workers w JOIN w.animals a";
+        return entityManager.createQuery(query).getResultList();
     }
 }
