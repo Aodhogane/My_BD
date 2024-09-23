@@ -1,35 +1,34 @@
 package com.example.my_bd_spring.servis;
 
-import com.example.my_bd_spring.DTO.WorkersResponseDTO;
-import com.example.my_bd_spring.domain.Workers;
-import com.example.my_bd_spring.repositories.WorkersRepository;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
-public class WorkersService {
-    private final WorkersRepository workersRepository;
+import org.springframework.stereotype.Service;
 
-    public WorkersService(WorkersRepository workersRepository) {
+import com.example.my_bd_spring.DTO.WorkersResponseDTO;
+import com.example.my_bd_spring.contract.WorkersRepositoryContract;
+import com.example.my_bd_spring.domain.Workers;
+
+@Service
+public final class WorkersService implements WorkersServiceContract { 
+
+    private final WorkersRepositoryContract workersRepository; 
+
+    public WorkersService(final WorkersRepositoryContract workersRepository) {
         this.workersRepository = workersRepository;
     }
 
-    public WorkersResponseDTO getWorkerById(Integer workerId) {
-        Workers worker = workersRepository.findById(workerId);
+    public final WorkersResponseDTO getWorkerById(final Integer workerId) {
+        final Workers worker = workersRepository.findById(workerId);
 
-        // Проверка, если работник не найден, возвращаем пустой объект WorkersResponseDTO
         if (worker == null) {
             return new WorkersResponseDTO();
         }
 
-        // Извлечение и преобразование типов животных, за которыми ухаживает работник, в список строк
-        List<String> animalTypes = worker.getAnimals().stream()
+        final List<String> animalTypes = worker.getAnimals().stream()
                 .map(animal -> animal.getTypeAni())
                 .collect(Collectors.toList());
 
-        // Возврат объекта WorkersResponseDTO с данными о работнике и типах животных
         return new WorkersResponseDTO(worker.getId(), worker.getFio(), worker.getPost(), animalTypes);
     }
 }

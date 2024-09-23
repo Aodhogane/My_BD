@@ -1,5 +1,6 @@
 package com.example.my_bd_spring.repositories;
 
+import com.example.my_bd_spring.contract.AnimalRepositoryContract;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 @Repository
-public class AnimalRepository {
+public class AnimalRepository implements AnimalRepositoryContract {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -23,6 +24,7 @@ public class AnimalRepository {
         this.dataSource = dataSource;
     }
 
+    @Override
     @Transactional
     public Integer addNewAnimalAndAssign(String species, Integer classId, Integer zooId, Integer cellId, Integer workerId) {
         Integer newAnimalId = null;

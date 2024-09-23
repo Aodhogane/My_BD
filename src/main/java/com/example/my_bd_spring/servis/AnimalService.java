@@ -2,19 +2,20 @@ package com.example.my_bd_spring.servis;
 
 import com.example.my_bd_spring.DTO.AddAnimalRequestDTO;
 import com.example.my_bd_spring.DTO.AddAnimalResponseDTO;
-import com.example.my_bd_spring.repositories.AnimalRepository;
+import com.example.my_bd_spring.contract.AnimalRepositoryContract;
 import com.example.my_bd_spring.repositories.WorkersRepository;
 import com.example.my_bd_spring.domain.Workers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class AnimalService {
-    private final AnimalRepository animalRepository;
+    private final AnimalRepositoryContract animalRepository;
     private final WorkersRepository workersRepository;
 
     @Autowired
-    public AnimalService(AnimalRepository animalRepository, WorkersRepository workersRepository) {
+    public AnimalService(AnimalRepositoryContract animalRepository, WorkersRepository workersRepository) {
         this.animalRepository = animalRepository;
         this.workersRepository = workersRepository;
     }
