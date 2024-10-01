@@ -1,13 +1,15 @@
 package com.example.my_bd_spring.repositories;
 
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
 import com.example.my_bd_spring.contract.EventRepositoryContract;
 import com.example.my_bd_spring.domain.Event;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public class EventRepository implements EventRepositoryContract {
