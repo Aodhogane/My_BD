@@ -19,10 +19,10 @@ public final class WorkersService implements WorkersServiceContract {
     }
 
     public final WorkersResponseDTO getWorkerById(final Integer workerId) {
-        final Workers worker = workersRepository.findById(workerId);
+        final Workers worker = workersRepository.getWorkerById(workerId); // Используем метод с ограничением
 
         if (worker == null) {
-            return new WorkersResponseDTO();
+            return new WorkersResponseDTO(); // Вернёт пустой DTO, если работник не найден
         }
 
         final List<String> animalTypes = worker.getAnimals().stream()
